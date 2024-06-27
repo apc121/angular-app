@@ -6,8 +6,8 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         SONARQUBE_SERVER = 'SonarQube' 
         SONAR_TOKEN = credentials('sonar-token')
-        PATH = "/root/sonar-scanner-4.6.2.2472-linux/bin:$PATH"
-
+        SONAR_SCANNER_HOME = '/opt/sonar-scanner'
+        PATH = "${env.SONAR_SCANNER_HOME}/bin:${env.PATH}"
     }
    
     stages {
