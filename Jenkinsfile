@@ -18,14 +18,13 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-                    withSonarQubeEnv('SonarQube') { 
+                withSonarQubeEnv('SonarQube') { 
                     script {
                         sh '''
                             sonar-scanner \
                             -Dsonar.projectKey=angular-app \
                             -Dsonar.sources=src \
-                            -Dsonar.host.url=http://13.201.163.216/:9000 \
+                            -Dsonar.host.url=http://13.201.163.216:9000 \
                             -Dsonar.login=$SONAR_TOKEN \
                             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                         '''
@@ -50,9 +49,8 @@ pipeline {
                     string(credentialsId: 'your-aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
                     string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')
                 ]) {
-
                     sh '''
-                    aws s3 cp dist/daily/ s3://mybucket-12121/ --recursive
+                        aws s3 cp dist/daily/ s3://mybucket-12121/ --recursive
                     '''
                 }
             }
