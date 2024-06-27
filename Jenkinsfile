@@ -21,7 +21,7 @@ pipeline {
                 ]) {
                     // Use the 'aws s3 cp' command to upload the files
                     sh '''
-                    aws s3 cp dist/ s3://mybucket-12121/ --recursive
+                    aws s3 cp dist/daily/ s3://mybucket-12121/ --recursive
                     '''
                 }
             }
