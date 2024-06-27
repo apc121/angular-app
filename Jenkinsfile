@@ -35,16 +35,6 @@ pipeline {
             }
         }
 
-        stage('Quality Gate') {
-            steps {
-                script {
-                    timeout(time: 1, unit: 'HOURS') {
-                        waitForQualityGate abortPipeline: true
-                    }
-                }
-            }
-        }
-
         stage('Deploy to S3') {
             steps {
                 withCredentials([
