@@ -10,7 +10,7 @@
                     <input type="text" id="txtName" (ngModelChange)="onFilterItems($event)" [(ngModel)]="todoItem" placeholder="Add a new task">
                 </div>
                 <div class="controls">
-                    <button class="clear-btn" (click)="onAdd()">Add</button> 
+                    <button class="clear-btn" (click)="onAdd()">ClicktoAdd</button> 
                 </div>
                 <ul class="task-box"> 
                     <li class="task" *ngFor="let todoItem of filteredArray">
